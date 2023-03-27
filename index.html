@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+    <meta name="author" content="KPZ">
+    <meta name="description" content="Free & Easy To Use Web Markdown Editor">
+    <meta name="keywords" content="Markdown, Editor, Markdown Editor">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Inkwell</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center; font-size: 72px; height: 30px; text-decoration: underline;">Inkwell</h1>
+    <h2 id="text_h2_1">Free Markdown Editor</h2>
+
+    <hr style="height: 2px; background-color:antiquewhite; color:antiquewhite;">
+
+    <div id="markdown">
+        <div id="editor" contenteditable></div>
+        <div id="preview"></div>
+    </div>
+
+</body>
+
+<script>
+    const editor = document.getElementById("editor");
+    const preview = document.getElementById("preview");
+
+    editor.addEventListener("input", () => {
+        preview.innerHTML = marked(editor.innerHTML);
+    });
+
+    editor.addEventListener("keydown", (event) => {
+        // Check if Ctrl + B is pressed
+        if (event.ctrlKey && event.key === "b") {
+            // Prevent the default browser behavior of bolding the entire editor
+            event.preventDefault();
+
+            // Get the current selection in the editor
+            const selection = window.getSelection().toString();
+
+            // Check if the selection is already bolded
+            if (selection.startsWith("**") && selection.endsWith("**")) {
+                // Remove the bold tags and replace the selection in the editor
+                document.execCommand("bold", false, null);
+            } else {
+                // Wrap the selection in bold tags and replace it in the editor
+                document.execCommand("bold", false, null);
+            }
+
+            // Update the preview with the new bolded text
+            preview.innerHTML = marked(editor.innerHTML);
+        } else if (event.key === "Enter") {
+            // Prevent the default browser behavior of creating a new line
+            event.preventDefault();
+
+            // Get the current selection in the editor
+            const selection = window.getSelection();
+
+            // Insert "#" or "$" at the beginning of the new line
+            const range = selection.getRangeAt(0);
+            const newLine = document.createElement("p");
+            newLine.innerHTML = "#";
+            if (editor.lastChild === range.endContainer) {
+                editor.appendChild(newLine);
+            } else {
+                range.insertNode(newLine);
+            }
+            
+            // Make "#" and "$" invisible
+            newLine.addEventListener("keydown", (event) => {
+                if (event.key === "#" || event.key === "$") {
+                    event.preventDefault();
+                }
+            });
+        }
+    });
+</script>
+
+</html>

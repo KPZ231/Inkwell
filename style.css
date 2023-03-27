@@ -1,0 +1,33 @@
+body {
+    background-color: #252525;
+}
+
+#markdown {
+    position: relative;
+    margin: auto;
+    width: 50%;
+}
+
+#editor{
+    font-family: monospace;
+    font-size: x-large;
+    color: antiquewhite;
+    background-color: transparent;
+    border-style: none;
+    width: 970px;
+    height: 700px;
+    resize: none;
+}
+
+h1,h2,h3,h4 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: antiquewhite;
+}
+
+#text_h2_1 {
+    text-align: center;
+    position: relative;
+    font-style: italic;
+}
+
+  
