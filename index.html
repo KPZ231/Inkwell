@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="md-block.js"></script>
+
 
     <link rel="stylesheet" href="style.css">
 
@@ -22,66 +24,86 @@
 
     <hr style="height: 2px; background-color:antiquewhite; color:antiquewhite;">
 
+    <div id="download_menu">
+        <button onclick="saveFile()" class="menu_button"><img src="Icons/save_icon.svg" alt="Save To The Computer"></button>
+        <button onclick="restartEditor()" class="menu_button"><img src="Icons/reset.svg" alt="Reset Editor"></button>
+
+    </div>
+
+    <div style="float:right;">
+        <div id="toolbar">
+            <button class="toolbar_button" onclick="makeBold()">Bold</button>
+            <button class="toolbar_button" onclick="makeItalic()">Italic</button>
+            <button class="toolbar_button">Code</button>
+            <select id="size_of_text">
+                <option value="H1">H1</option>
+                <option value="H2">H2</option>
+                <option value="H3">H3</option>
+                <option value="H4">H4</option>
+            </select>
+            <select id="lists">
+                <option value="Ordered_List">Ordered Lists</option>
+                <option value="Unordered_List">Unordered Lists</option>
+            </select>
+        </div>
+    </div>
+
     <div id="markdown">
         <div id="editor" contenteditable></div>
         <div id="preview"></div>
     </div>
 
+    
+
 </body>
 
 <script>
-    const editor = document.getElementById("editor");
-    const preview = document.getElementById("preview");
 
-    editor.addEventListener("input", () => {
-        preview.innerHTML = marked(editor.innerHTML);
-    });
-
-    editor.addEventListener("keydown", (event) => {
-        // Check if Ctrl + B is pressed
-        if (event.ctrlKey && event.key === "b") {
-            // Prevent the default browser behavior of bolding the entire editor
-            event.preventDefault();
-
-            // Get the current selection in the editor
-            const selection = window.getSelection().toString();
-
-            // Check if the selection is already bolded
-            if (selection.startsWith("**") && selection.endsWith("**")) {
-                // Remove the bold tags and replace the selection in the editor
-                document.execCommand("bold", false, null);
-            } else {
-                // Wrap the selection in bold tags and replace it in the editor
-                document.execCommand("bold", false, null);
-            }
-
-            // Update the preview with the new bolded text
-            preview.innerHTML = marked(editor.innerHTML);
-        } else if (event.key === "Enter") {
-            // Prevent the default browser behavior of creating a new line
-            event.preventDefault();
-
-            // Get the current selection in the editor
-            const selection = window.getSelection();
-
-            // Insert "#" or "$" at the beginning of the new line
-            const range = selection.getRangeAt(0);
-            const newLine = document.createElement("p");
-            newLine.innerHTML = "#";
-            if (editor.lastChild === range.endContainer) {
-                editor.appendChild(newLine);
-            } else {
-                range.insertNode(newLine);
-            }
-            
-            // Make "#" and "$" invisible
-            newLine.addEventListener("keydown", (event) => {
-                if (event.key === "#" || event.key === "$") {
-                    event.preventDefault();
-                }
-            });
+    function handleKeyDown(event) {
+        if (event.ctrlKey && event.keyCode === 66) {
+        document.execCommand('bold'); 
         }
-    });
+        else if (event.ctrlKey && event.keyCode === 73) {
+        document.execCommand('italic'); 
+        }
+    }
+
+    const editor = document.querySelector('.containable');
+    
+    editor.addEventListener('keydown', handleKeyDown);
+
+    function makeBold(){
+        document.execCommand('bold'); 
+    }
+
+    function makeItalic(){
+        document.execCommand('italic'); 
+    }
+
+    function saveFile() {
+        var editor = document.getElementById("editor");
+        var tekst = editor.innerHTML;
+        var zakodowanyTekst = encodeURIComponent(tekst);
+        var odkodowanyTekst = decodeURIComponent(zakodowanyTekst);
+        var plik = new Blob([odkodowanyTekst], { type: "text/plain;charset=utf-8" });
+        var urlPliku = URL.createObjectURL(plik);
+      
+        var link = document.createElement("a");
+        link.download = "tekst.txt";
+        link.href = urlPliku;
+        link.style.display = "none";
+        document.body.appendChild(link);
+      
+        link.click();
+      
+        document.body.removeChild(link);
+      }
+      
+
+    function restartEditor(){
+        alert("Restarting Editor...");
+    }
+
 </script>
 
 </html>

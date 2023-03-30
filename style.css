@@ -8,14 +8,23 @@ body {
     width: 50%;
 }
 
+#toolbar{
+    position:fixed;
+    background-color: #303030;
+    width: 160px;
+    height: 300px;
+    box-shadow: 5px 5px 10px black;
+    right: 30px;
+    top: 30%;
+}
+
 #editor{
     font-family: monospace;
     font-size: x-large;
     color: antiquewhite;
-    background-color: transparent;
+    background-color: #303030;
+    box-shadow: 5px 5px 10px black;
     border-style: none;
-    width: 970px;
-    height: 700px;
     resize: none;
 }
 
@@ -30,4 +39,66 @@ h1,h2,h3,h4 {
     font-style: italic;
 }
 
-  
+#download_menu{
+    position:fixed;
+    background-color: #303030;
+    width: 100px;
+    height: 130px;
+    box-shadow: 5px 5px 10px black;
+    left: 30px;
+    top: 30%;
+}
+
+
+
+.menu_button {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    background-color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    padding-right: 50%;
+    width: 50%;
+}
+.menu_button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.toolbar_button{
+    background-color: transparent; 
+    border-color: transparent;
+    color: antiquewhite;
+    position: relative;
+    margin-top: 20%;
+    margin-left: 37.5%;
+}
+.toolbar_button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#size_of_text{
+    background-color: transparent; 
+    position: relative;
+    border-color: transparent;
+    color: antiquewhite;
+    position: relative;
+    margin-top: 20%;
+    margin-left: 40%;
+}
+
+select option{
+    color: black;
+}
+
+select option:checked {
+    background-color: rgba(47, 48, 51, 0.41)
+}
+#lists{
+    background-color: transparent; 
+    border-color: transparent;
+    color: antiquewhite;
+    position: relative;
+    margin-left: 20%;
+    margin-top: 20%;
+}
