@@ -1,104 +1,94 @@
 body {
-    background-color: #252525;
+  background-color: #303030;
+  margin: 0px;
+  height: 100%;
 }
 
-#markdown {
-    position: relative;
-    margin: auto;
-    width: 50%;
+h1,h2,h3,p{
+  color: white;
+  font-family: monospace;
 }
 
-#toolbar{
-    position:fixed;
-    background-color: #303030;
-    width: 160px;
-    height: 300px;
-    box-shadow: 5px 5px 10px black;
-    right: 30px;
-    top: 30%;
+#documentName{
+  position: relative;
+  width: 30%;
+  float: right;
+  background-color: #343434;
+  resize: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
 }
 
-#editor{
-    font-family: monospace;
-    font-size: x-large;
-    color: antiquewhite;
-    background-color: #303030;
-    box-shadow: 5px 5px 10px black;
-    border-style: none;
-    resize: none;
+#containter {
+  position: relative;
+  float: right;
+  background-color: #343434;
+  width: 85%;
 }
 
-h1,h2,h3,h4 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: antiquewhite;
+#preview {
+  position: relative;
+  width: 50%;
+  float: right;
+  background-color: #404040;
+  resize: none;
+  border: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
 }
 
-#text_h2_1 {
-    text-align: center;
-    position: relative;
-    font-style: italic;
+#editor {
+  position: relative;
+  width: 49%;
+  float: left;
+  background-color: #343434;
+  resize: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
 }
 
-#download_menu{
-    position:fixed;
-    background-color: #303030;
-    width: 100px;
-    height: 130px;
-    box-shadow: 5px 5px 10px black;
-    left: 30px;
-    top: 30%;
+#toolbar {
+  position: fixed;
+  float: left;
+  background-color: #343434;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
+  width: 15%;
+  height: 100vb;
+}
+
+pre {
+  background-color: #252525;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
 }
 
 
-
-.menu_button {
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-    background-color: transparent;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10%;
-    padding-right: 50%;
-    width: 50%;
-}
-.menu_button:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-.toolbar_button{
-    background-color: transparent; 
-    border-color: transparent;
-    color: antiquewhite;
-    position: relative;
-    margin-top: 20%;
-    margin-left: 37.5%;
-}
-.toolbar_button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-#size_of_text{
-    background-color: transparent; 
-    position: relative;
-    border-color: transparent;
-    color: antiquewhite;
-    position: relative;
-    margin-top: 20%;
-    margin-left: 40%;
-}
-
-select option{
-    color: black;
-}
-
-select option:checked {
-    background-color: rgba(47, 48, 51, 0.41)
-}
-#lists{
-    background-color: transparent; 
-    border-color: transparent;
-    color: antiquewhite;
-    position: relative;
-    margin-left: 20%;
-    margin-top: 20%;
+#createFile{
+  width: 80%;
+  height: 10vb;
+  position: relative;
+  margin: auto;
+  background-color: #303030;
 }

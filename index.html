@@ -1,109 +1,62 @@
 <!DOCTYPE html>
-
 <html lang="pl">
 
 <head>
-    <meta name="author" content="KPZ">
-    <meta name="description" content="Free & Easy To Use Web Markdown Editor">
-    <meta name="keywords" content="Markdown, Editor, Markdown Editor">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="md-block.js"></script>
-
-
-    <link rel="stylesheet" href="style.css">
-
-    <title>Inkwell</title>
+  <meta name="description" content="Free Markdown Editor">
+  <meta name="author" content="KPZ & Hype">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="hjis.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+  <title>Inkwell</title>
 </head>
 
 <body>
 
-    <h1 style="text-align: center; font-size: 72px; height: 30px; text-decoration: underline;">Inkwell</h1>
-    <h2 id="text_h2_1">Free Markdown Editor</h2>
+  <textarea id="documentName" placeholder="Enter Document Name..." maxlength="40" cols="20" rows="1"></textarea>
 
-    <hr style="height: 2px; background-color:antiquewhite; color:antiquewhite;">
-
-    <div id="download_menu">
-        <button onclick="saveFile()" class="menu_button"><img src="Icons/save_icon.svg" alt="Save To The Computer"></button>
-        <button onclick="restartEditor()" class="menu_button"><img src="Icons/reset.svg" alt="Reset Editor"></button>
-
+  <div id="containter">
+    <textarea placeholder="Enter Markdown Text Here..." id="editor" cols="55"></textarea>
+    <div id="preview">
+      <p id="markdownplaceholder" style="opacity: 60%; position: relative; top: -23px">Markdown Text Area...</p>
     </div>
+  </div>
 
-    <div style="float:right;">
-        <div id="toolbar">
-            <button class="toolbar_button" onclick="makeBold()">Bold</button>
-            <button class="toolbar_button" onclick="makeItalic()">Italic</button>
-            <button class="toolbar_button">Code</button>
-            <select id="size_of_text">
-                <option value="H1">H1</option>
-                <option value="H2">H2</option>
-                <option value="H3">H3</option>
-                <option value="H4">H4</option>
-            </select>
-            <select id="lists">
-                <option value="Ordered_List">Ordered Lists</option>
-                <option value="Unordered_List">Unordered Lists</option>
-            </select>
-        </div>
+  <div id="toolbar">
+    <h1 style="text-align: center;">Inkwell</h1>
+    <div id="createFile">
+        <img onclick="save()" id="save" src="icons/save.png" alt="" width="36" height="36"> 
+        <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Save Document</p>
+        <img onclick="loadFile()" src="icons/load.png" alt="" width="36" height="36"> 
+        <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Load File</p>
     </div>
+  </div>
 
-    <div id="markdown">
-        <div id="editor" contenteditable></div>
-        <div id="preview"></div>
-    </div>
+  <script src="scripts/savesystem.js"></script>
+  <script src="scripts/autogrow.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <script>
+    window.onload = () => {
+      const editor = document.getElementById("editor");
+      const preview = document.getElementById("preview");
+      if(editor.value == null){
+        preview.firstChild.getElementById("markdownplaceholder").document.value = "Markdown Text Area...";
+      }
 
-    
+      editor.addEventListener("input", () => {
+        const markdown = editor.value;
+        preview.innerHTML = marked(markdown);
+        hljs.highlightAll();
+      });
+    };
+  </script>
 
 </body>
-
-<script>
-
-    function handleKeyDown(event) {
-        if (event.ctrlKey && event.keyCode === 66) {
-        document.execCommand('bold'); 
-        }
-        else if (event.ctrlKey && event.keyCode === 73) {
-        document.execCommand('italic'); 
-        }
-    }
-
-    const editor = document.querySelector('.containable');
-    
-    editor.addEventListener('keydown', handleKeyDown);
-
-    function makeBold(){
-        document.execCommand('bold'); 
-    }
-
-    function makeItalic(){
-        document.execCommand('italic'); 
-    }
-
-    function saveFile() {
-        var editor = document.getElementById("editor");
-        var tekst = editor.innerHTML;
-        var zakodowanyTekst = encodeURIComponent(tekst);
-        var odkodowanyTekst = decodeURIComponent(zakodowanyTekst);
-        var plik = new Blob([odkodowanyTekst], { type: "text/plain;charset=utf-8" });
-        var urlPliku = URL.createObjectURL(plik);
-      
-        var link = document.createElement("a");
-        link.download = "tekst.txt";
-        link.href = urlPliku;
-        link.style.display = "none";
-        document.body.appendChild(link);
-      
-        link.click();
-      
-        document.body.removeChild(link);
-      }
-      
-
-    function restartEditor(){
-        alert("Restarting Editor...");
-    }
-
-</script>
 
 </html>
