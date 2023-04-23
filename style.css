@@ -92,3 +92,23 @@ pre code {
   margin: auto;
   background-color: #303030;
 }
+
+/* unvisited link */
+a:link {
+  color: #7851A9;
+}
+
+/* visited link */
+a:visited {
+  color: blueviolet;
+}
+
+/* mouse over link */
+a:hover {
+  color: blueviolet;
+}
+
+/* selected link */
+a:active {
+  color: #BF00FF;
+}
