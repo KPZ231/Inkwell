@@ -7,8 +7,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="hjis.css" />
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/hjis.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <script>hljs.initHighlightingOnLoad();</script>
@@ -22,23 +22,29 @@
   <textarea id="documentName" placeholder="Enter Document Name..." maxlength="40" cols="20" rows="1"></textarea>
 
   <div id="containter">
-    <textarea placeholder="Enter Markdown Text Here..." id="editor" cols="55"></textarea>
-    <div id="preview">
-      <p id="markdownplaceholder" style="opacity: 60%; position: relative; top: -23px">Markdown Text Area...</p>
-    </div>
+      <textarea placeholder="Enter Markdown Text Here..." id="editor" cols="55" name="message"></textarea>
+      <div id="preview">
+        <p id="markdownplaceholder" style="opacity: 60%; position: relative; top: -23px">Markdown Text Area...</p>
+      </div>
+    </form>
   </div>
 
+
   <div id="toolbar">
-    <h1 style="text-align: center;">Inkwell</h1>
-    <div id="createFile">
-      <img onclick="save()" id="save" src="icons/save.png" alt="" width="36" height="36"> 
-      <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Save Document</p>
-      <img onclick="loadFile()" src="icons/load.png" alt="" width="36" height="36"> 
-      <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Load File</p>
-    </div>
-    <a href="https://www.markdownguide.org/basic-syntax/" target="_blank"
-    style="position: relative; padding-left: 20px; top: 70vb; font-size: x-large;">Markdown Documentation</a>
+  <h1 style="text-align: center;">Inkwell</h1>
+  <div id="createFile">
+    <img onclick="save()" id="save" src="icons/save.png" alt="" width="36" height="36">
+    <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Save Document</p>
+    <img onclick="loadFile()" src="icons/load.png" alt="" width="36" height="36">
+    <p style="font-size: x-large; padding-left: 50px; margin-top: -35px;">Load File</p>
   </div>
+  <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" style="position: relative; padding-left: 20px; top: 70vb; font-size: x-large;">Markdown Documentation</a>
+</div>
+
+<button id="toggleToolbar"><img src="icons/arrow_right.png" alt=""></button>
+
+
+
 
   
 
@@ -46,6 +52,20 @@
   <script src="scripts/autogrow.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
   <script>
+    var toggleToolbarButton = document.getElementById('toggleToolbar');
+    var toolbar = document.getElementById('toolbar');
+
+    toggleToolbarButton.addEventListener('click', function() {
+      toolbar.classList.toggle('collapsed');
+      toggleToolbarButton.classList.toggle('collapsed');
+    });
+
+    window.addEventListener('resize', function() {
+      if (!toolbar.classList.contains('collapsed')) {
+        toggleToolbarButton.classList.add('collapsed');
+      }
+    });
+
     window.onload = () => {
       const editor = document.getElementById("editor");
       const preview = document.getElementById("preview");
