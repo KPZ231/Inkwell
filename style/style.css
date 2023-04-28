@@ -1,157 +1,306 @@
+/* style.css */
 body {
-  background-color: #303030;
-  margin: 0px;
-  height: 100%;
-}
-
-h1,h2,h3,p{
-  color: white;
   font-family: monospace;
-}
-
-#documentName{
-  position: relative;
-  width: 30%;
-  float: right;
-  background-color: #343434;
-  resize: none;
-  border: none;
-  overflow: auto;
-  outline: none;
-  color: whitesmoke;
-  font-size: xx-large;
-  font-family: monospace;
-}
-
-#containter {
-  position: relative;
-  float: right;
-  background-color: #343434;
-  width: 85%;
-}
-
-#preview {
-  position: relative;
-  width: 50%;
-  float: right;
-  background-color: #404040;
-  resize: none;
-  border: none;
-  color: whitesmoke;
-  font-size: xx-large;
-  font-family: monospace;
-}
-
-#editor {
-  position: relative;
-  width: 49%;
-  float: left;
-  background-color: #343434;
-  resize: none;
-  border: none;
-  overflow: auto;
-  outline: none;
-  color: whitesmoke;
-  font-size: xx-large;
-  font-family: monospace;
-}
-
-/* #toolbar {
-  position: fixed;
-  float: left;
-  background-color: #343434;
-  color: whitesmoke;
-  font-size: xx-large;
-  font-family: monospace;
-  width: 15%;
-  height: 100vb;
-} */
-
-#toolbar {
-  width: 15%;
-  height: 100vh;
-  background-color: #343434;
-  position: fixed;
-  font-size: xx-large;
-  font-family: monospace;
-  color: whitesmoke;
-  top: 0;
-  left: -300px;
-  transition: left 0.5s ease;
-}
-
-#toolbar.collapsed {
-  left: 0;
-}
-
-#toggleToolbar {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: left 0.5s ease;
-}
-
-#toggleToolbar img {
-  width: 32px;
-  height: 32px;
-}
-
-
-pre {
-  background-color: #252525;
-  border: 1px solid #252525;
-  border-radius: 10px;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-pre code {
-  display: block;
-  overflow-x: auto;
+  background-color: #1e1e1e;
+  color: #c5c5c5;
+  margin: 0;
   padding: 0;
 }
 
+#containter {
+  display: flex;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  height: 100vh;
 
-#createFile{
-  width: 80%;
-  height: 10vb;
-  position: relative;
-  margin: auto;
-  background-color: #303030;
 }
-button{
+
+textarea {
+  resize: none;
+  background-color: #2e2e2e;
+  color: #c5c5c5;
   border: none;
-  background-color: transparent;
-  cursor: pointer;
+}
+
+#documentName {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #c5c5c5; /* Dodaj subtelną dolną ramkę */
   outline: none;
+  background-color: #2e2e2e00;
+  color: #c5c5c5;
+  transition: border-color 0.3s ease; /* Dodaj płynną zmianę koloru ramki */
+}
+
+#documentName:focus {
+  border-color: #8b32b8; /* Zmień kolor dolnej ramki, gdy pole jest aktywne */
+}
+
+
+#editor {
+  width: 49%;
+  height: 100%;
+  padding: 20px;
+  outline: none;
+
+}
+
+#preview {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+
+  overflow-y: auto;
+}
+
+#toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e1e;
+  width: 210px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+#toolbar h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #c5c5c5;
+}
+
+#toolbar .toolbar-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 100px; /* Dodaj margines po prawej stronie */
+
+}
+
+#toolbar .toolbar-icons img {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#toolbar .toolbar-icons span {
+  margin-left: 10px;
+  color: #c5c5c5;
+}
+.toolbar-icons .icon-text-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
-/* unvisited link */
-a:link {
-  color: #7851A9;
+.toolbar-icons .icon-text-container span {
+  margin-right: 10px;
 }
 
-/* visited link */
-a:visited {
-  color: blueviolet;
+
+
+
+#customizeButton {
+  cursor: pointer;
+  background-color: #303130; /* Zmień kolor tła */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  margin: 20px 0;
+  transition-duration: 0.3s;
+  text-decoration: none;
+  display: flex; /* Zmienione z 'block' na 'flex' */
+  justify-content: center; /* Wyśrodkuj ikonę */
+  align-items: center; /* Wyrównaj ikonę i tekst w pionie */
+  width: 100%;
+  border-radius: 3px;
 }
 
-/* mouse over link */
-a:hover {
-  color: blueviolet;
+#customizeButton .material-icons {
+  font-size: 24px; /* Ustaw rozmiar ikony */
+  color: white; /* Ustaw kolor ikony */
+  margin-right: 8px; /* Dodaj odstęp między ikoną a tekstem */
 }
 
-/* selected link */
-a:active {
-  color: #BF00FF;
+#customizeButton .settings-text {
+  font-size: 16px; /* Ustaw rozmiar tekstu */
+  color: white; /* Ustaw kolor tekstu */
+}
+
+/* Custom margin for larger screens */
+@media screen and (min-height: 900px) {
+  #customizeButton {
+    margin-top: 350px;
+  }
+}
+
+#customizeButton:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+#mdDocumentation {
+  text-decoration: none;
+  color: #8b32b8;
+  margin-top: 20px;
+}
+
+#customizeWindow {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#customizeContent {
+  background-color: #3d3d3d;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+#customizeContent .title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.color-picker-label {
+  margin-right: 10px;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dropdown-label {
+  margin-right: 10px;
+}
+
+#resetButton {
+  cursor: pointer;
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+}
+.icon-text-container .material-icons {
+  font-size: 36px;
+  color: #c5c5c5;
+  cursor: pointer;
+}
+
+.icon-text-container span {
+  color: #c5c5c5;
+}
+
+.icon-text-container:hover .material-icons,
+.icon-text-container:hover span {
+  color: #fff;
+}
+/* Style dla paska przewijania */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Tło paska przewijania */
+::-webkit-scrollbar-track {
+  background-color: #3e3e3e;
+}
+
+/* Kolor kciuka paska przewijania */
+::-webkit-scrollbar-thumb {
+  background-color: #666;
+}
+
+/* Kolor kciuka paska przewijania przy najechaniu */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+
+/* style.css */
+/* ... (inne style) ... */
+.file-explorer {
+  font-family: monospace;
+  padding: 10px;
+  color: #c5c5c5;
+  width: 100%; /* Zaktualizowana szerokość */
+  /* max-height: 300px; */ /* Usunięte lub zakomentowane */
+  /* overflow-y: auto; */ /* Usunięte lub zakomentowane */
+}
+.folder {
+  margin-bottom: 10px;
+}
+
+.folder > span {
+  cursor: pointer;
+}
+
+.folder ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.folder li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.folder li:hover {
+  background-color: #3c3c3c;
+}
+
+.folder li .material-icons {
+  font-size: 14px;
+  margin-right: 4px;
+}
+button {
+  cursor: pointer;
+  background-color: #303130; /* Zmień kolor tła */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  text-decoration: none;
+  display: flex; /* Zmienione z 'block' na 'flex' */
+  justify-content: center; /* Wyśrodkuj ikonę */
+  align-items: center; /* Wyrównaj ikonę i tekst w pionie */
+  width: 100%;
+  border-radius: 3px;
+}
+.folder-action,
+.folder-icon,
+.folder-text {
+  display: inline-block;
+  vertical-align: middle;
 }
