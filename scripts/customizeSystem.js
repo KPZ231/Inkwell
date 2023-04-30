@@ -163,26 +163,26 @@ function loadData() {
 }
 
 // Call loadData() function when the page is loaded to load the saved data from cookies
-window.addEventListener("load", function () {
-  loadData();
+// window.addEventListener("load", function () {
+//   loadData();
 
-  var savedData = loadData();
-  if (savedData) {
-    document.body.style.backgroundColor = savedData.bodyColor;
-    document.getElementById("editor").style.backgroundColor = savedData.editorColor;
-    document.getElementById("preview").style.backgroundColor = savedData.previewColor;
-    document.getElementById("toolbar").style.backgroundColor = savedData.toolbarColor;
-    document.body.style.color = savedData.textColor;
-    document.querySelectorAll("code").forEach(function(code) {
-      code.style.color = savedData.codeColor;
-    });
-    document.body.style.fontFamily = savedData.fontFamily;
-    bodyColorPicker.value = savedData.bodyColor;
-    editorColorPicker.value = savedData.editorColor;
-    previewColorPicker.value = savedData.previewColor;
-    toolbarColorPicker.value = savedData.toolbarColor;
-    textColorPicker.value = savedData.textColor;
-    codeColorPicker.value = savedData.codeColor;
-    fontDropdown.value = savedData.fontFamily;
-  }
-});
+//   var savedData = loadData();
+//   if (savedData) {
+//     document.body.style.backgroundColor = savedData.bodyColor;
+//     document.getElementById("editor").style.backgroundColor = savedData.editorColor;
+//     document.getElementById("preview").style.backgroundColor = savedData.previewColor;
+//     document.getElementById("toolbar").style.backgroundColor = savedData.toolbarColor;
+//     document.body.style.color = savedData.textColor;
+//     document.querySelectorAll("code").forEach(function(code) {
+//       code.style.color = savedData.codeColor;
+//     });
+//     document.body.style.fontFamily = savedData.fontFamily;
+//     bodyColorPicker.value = savedData.bodyColor;
+//     editorColorPicker.value = savedData.editorColor;
+//     previewColorPicker.value = savedData.previewColor;
+//     toolbarColorPicker.value = savedData.toolbarColor;
+//     textColorPicker.value = savedData.textColor;
+//     codeColorPicker.value = savedData.codeColor;
+//     fontDropdown.value = savedData.fontFamily;
+//   }
+// });

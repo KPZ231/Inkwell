@@ -22,7 +22,9 @@ h1,h2,h3,p{
   font-size: xx-large;
   font-family: monospace;
 }
-
+#icontoolbar {
+  padding-left: 50px; margin-top: -35px; font-size: 1.4ex;
+}
 #containter {
   position: relative;
   float: right;
