@@ -103,10 +103,11 @@
 session_start();
 
 // Set database connection variables
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'inkwell';
+$host = 'sql7.freemysqlhosting.net';
+$username = 'sql7616083';
+$password = 'vjF5EIldlc';
+$database = 'sql7616083';
+
 
 // Connect to the database
 $conn = mysqli_connect($host, $username, $password, $database);

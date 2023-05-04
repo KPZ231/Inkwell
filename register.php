@@ -100,11 +100,19 @@
 </style>
 
 <?php
+
+// Funkcja do szyfrowania hasła
+function encyptedPassword($password) {
+  // Użyj silnego algorytmu szyfrowania, np. bcrypt
+  $solt = '$2y$10$' . substr(md5(uniqid(rand(), true)), 0, 22);
+  return crypt($password, $solt);
+}
+
 // Set database connection variables
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'inkwell';
+$host = 'sql7.freemysqlhosting.net';
+$username = 'sql7616083';
+$password = 'vjF5EIldlc';
+$database = 'sql7616083';
 
 // Connect to the database
 $conn = mysqli_connect($host, $username, $password, $database);
@@ -119,6 +127,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
   $username = mysqli_real_escape_string($conn, $_POST['username']);
+
+  // Szyfruj hasło
+  $encyptedPasswordFINAL = encyptedPassword($password);
 
   // Check if user with the same email already exists in the database
   $email_check_query = "SELECT * FROM users WHERE _email='$email' LIMIT 1";
@@ -135,8 +146,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     echo "<div style='color: red; text-align:center; font-family: monospace; font-size: 2em;'>
     This username is already being used</div>";
   } else {
-    // Insert user data into the database
-    $insert_query = "INSERT INTO users (_name, _email, _password) VALUES('$username', '$email', '$password')";
+    // Insert user data into the database with encrypted password
+    $insert_query = "INSERT INTO users (_name, _email, _password) VALUES('$username', '$email', '$encyptedPasswordFINAL')";
     mysqli_query($conn, $insert_query);
 
     // Close the database connection
@@ -146,10 +157,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     exit;
   }
   
-
- 
 }
 ?>
+
 
 
 <body>
