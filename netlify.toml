@@ -1,9 +1,15 @@
+[[headers]]
+  # Ustaw nagłówek zezwalający na dostęp do wszystkich zasobów (CORS)
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
 [[redirects]]
-  from = "/login"
+  from = "/index.html"
   to = "/login.php"
   status = 200
 
 [[redirects]]
-  from = "/register"
+  from = "/index.html"
   to = "/register.php"
   status = 200
