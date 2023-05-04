@@ -29,15 +29,18 @@ textarea {
   padding: 8px;
   font-size: 18px;
   border: none;
-  border-bottom: 2px solid #c5c5c5; /* Dodaj subtelną dolną ramkę */
+  border-bottom: 2px solid #c5c5c5;
+  /* Dodaj subtelną dolną ramkę */
   outline: none;
   background-color: #2e2e2e00;
   color: #c5c5c5;
-  transition: border-color 0.3s ease; /* Dodaj płynną zmianę koloru ramki */
+  transition: border-color 0.3s ease;
+  /* Dodaj płynną zmianę koloru ramki */
 }
 
 #documentName:focus {
-  border-color: #8b32b8; /* Zmień kolor dolnej ramki, gdy pole jest aktywne */
+  border-color: #8b32b8;
+  /* Zmień kolor dolnej ramki, gdy pole jest aktywne */
 }
 
 
@@ -83,7 +86,8 @@ textarea {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  margin-right: 100px; /* Dodaj margines po prawej stronie */
+  margin-right: 100px;
+  /* Dodaj margines po prawej stronie */
 
 }
 
@@ -96,6 +100,7 @@ textarea {
   margin-left: 10px;
   color: #c5c5c5;
 }
+
 .toolbar-icons .icon-text-container {
   display: flex;
   align-items: center;
@@ -111,49 +116,57 @@ textarea {
 
 
 #customizeButton {
+  font-family: monospace;
   cursor: pointer;
-  background-color: #303130; /* Zmień kolor tła */
+  /*background-color: #303130;
+  /* Zmień kolor tła */
   border: none;
   color: white;
   padding: 10px;
   text-align: center;
   font-size: 16px;
-  margin: 20px 0;
+  margin: 10px 0px;
   transition-duration: 0.3s;
   text-decoration: none;
-  display: flex; /* Zmienione z 'block' na 'flex' */
-  justify-content: center; /* Wyśrodkuj ikonę */
-  align-items: center; /* Wyrównaj ikonę i tekst w pionie */
+  display: flex;
+  /* Zmienione z 'block' na 'flex' */
+  justify-content: center;
+  /* Wyśrodkuj ikonę */
+  align-items: center;
+  /* Wyrównaj ikonę i tekst w pionie */
   width: 100%;
-  border-radius: 3px;
+  border-radius: 25px;
+  height: 10%;
+  display: block;
 }
 
 #customizeButton .material-icons {
-  font-size: 24px; /* Ustaw rozmiar ikony */
-  color: white; /* Ustaw kolor ikony */
-  margin-right: 8px; /* Dodaj odstęp między ikoną a tekstem */
+  font-size: 24px;
+  /* Ustaw rozmiar ikony */
+  color: white;
+  /* Ustaw kolor ikony */
+  margin-right: 8px;
+  /* Dodaj odstęp między ikoną a tekstem */
 }
 
 #customizeButton .settings-text {
-  font-size: 16px; /* Ustaw rozmiar tekstu */
-  color: white; /* Ustaw kolor tekstu */
+  font-size: 16px;
+  /* Ustaw rozmiar tekstu */
+  color: white;
+  /* Ustaw kolor tekstu */
 }
 
 /* Custom margin for larger screens */
 @media screen and (min-height: 900px) {
   #customizeButton {
-    margin-top: 350px;
+    margin-top: 270px;
+    font-family: monospace;
   }
 }
 
-#customizeButton:hover {
+button:hover {
   background-color: rgb(70, 70, 70);
-}
-
-#mdDocumentation {
-  text-decoration: none;
-  color: #8b32b8;
-  margin-top: 20px;
+  border-radius: 25px;
 }
 
 #customizeWindow {
@@ -209,6 +222,7 @@ textarea {
   color: white;
   padding: 12px 24px;
 }
+
 .icon-text-container .material-icons {
   font-size: 36px;
   color: #c5c5c5;
@@ -223,6 +237,7 @@ textarea {
 .icon-text-container:hover span {
   color: #fff;
 }
+
 /* Style dla paska przewijania */
 ::-webkit-scrollbar {
   width: 10px;
@@ -251,15 +266,19 @@ textarea {
   font-family: monospace;
   padding: 10px;
   color: #c5c5c5;
-  width: 100%; /* Zaktualizowana szerokość */
-  /* max-height: 300px; */ /* Usunięte lub zakomentowane */
-  /* overflow-y: auto; */ /* Usunięte lub zakomentowane */
+  width: 100%;
+  /* Zaktualizowana szerokość */
+  /* max-height: 300px; */
+  /* Usunięte lub zakomentowane */
+  /* overflow-y: auto; */
+  /* Usunięte lub zakomentowane */
 }
+
 .folder {
   margin-bottom: 10px;
 }
 
-.folder > span {
+.folder>span {
   cursor: pointer;
 }
 
@@ -282,9 +301,11 @@ textarea {
   font-size: 14px;
   margin-right: 4px;
 }
+
 button {
   cursor: pointer;
-  background-color: #303130; /* Zmień kolor tła */
+  background-color: transparent;
+  /* Zmień kolor tła */
   border: none;
   color: white;
   padding: 10px;
@@ -292,12 +313,16 @@ button {
   font-size: 16px;
   transition-duration: 0.3s;
   text-decoration: none;
-  display: flex; /* Zmienione z 'block' na 'flex' */
-  justify-content: center; /* Wyśrodkuj ikonę */
-  align-items: center; /* Wyrównaj ikonę i tekst w pionie */
+  display: flex;
+  /* Zmienione z 'block' na 'flex' */
+  justify-content: center;
+  /* Wyśrodkuj ikonę */
+  align-items: center;
+  /* Wyrównaj ikonę i tekst w pionie */
   width: 100%;
   border-radius: 3px;
 }
+
 .folder-action,
 .folder-icon,
 .folder-text {

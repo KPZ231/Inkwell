@@ -1,185 +1,236 @@
 <!DOCTYPE html>
 <html lang="pl">
+  <head>
+    <meta name="description" content="Free Markdown Editor" />
+    <meta name="author" content="KPZ & Hype" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/hjis.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="icons/favicon.png">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Inkwell</title>
+  </head>
 
-<head>
-  <meta name="description" content="Free Markdown Editor">
-  <meta name="author" content="KPZ & Hype">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/hjis.css" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <script>hljs.initHighlightingOnLoad();</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
-  <title>Inkwell</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-</head>
-
-<body>
-
-
-  <div id="containter">
-
-    <textarea placeholder="Enter Markdown Text Here..." id="editor" cols="55" name="message"></textarea>
-    <div id="preview">
-      <p id="markdownplaceholder" style="opacity: 60%; position: relative; top: -23px">Markdown Text Area...</p>
+  <body>
+    <div id="containter">
+      <textarea
+        placeholder="Enter Markdown Text Here..."
+        id="editor"
+        cols="55"
+        name="message"
+      ></textarea>
+      <div id="preview">
+        <p
+          id="markdownplaceholder"
+          style="opacity: 60%; position: relative; top: -23px"
+        >
+          Markdown Text Area...
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div id="toolbar">
-    <h1>Inkwell</h1>
-    <input id="documentName" type="text" placeholder="Document Name...">
-    <div class="toolbar-icons">
+    <div id="toolbar">
+      <h1>Inkwell</h1>
+      <input id="documentName" type="text" placeholder="Document Name..." />
+      <div class="toolbar-icons">
+        <div class="icon-text-container" onclick="save()" id="save">
+          <span class="material-icons">save</span>
+          <span>Save Document</span>
+        </div>
 
-
-      <div class="icon-text-container" onclick="save()" id="save">
-        <span class="material-icons">save</span>
-        <span>Save Document</span>
+        <div class="icon-text-container" onclick="loadFile()" id="load">
+          <span class="material-icons">folder_open</span>
+          <span>Load Document</span>
+        </div>
       </div>
 
-      <div class="icon-text-container" onclick="loadFile()" id="load">
-        <span class="material-icons">folder_open</span>
-        <span>Load Document</span>
+      <div class="file-explorer">
+        <br />
+
+        <div class="folder">
+          <span class="material-icons folder-icon">folder</span>
+          <span class="folder-text">Folder 3</span>
+          <span class="material-icons folder-action">add</span>
+          <span class="material-icons folder-action">remove</span>
+
+          <ul>
+            <li><span class="material-icons">insert_drive_file</span>File 1</li>
+            <li><span class="material-icons">insert_drive_file</span>File 2</li>
+          </ul>
+        </div>
+        <div class="folder">
+          <span class="material-icons folder-icon">folder</span>
+          <span class="folder-text">Folder 3</span>
+          <span class="material-icons folder-action">add</span>
+          <span class="material-icons folder-action">remove</span>
+
+          <ul>
+            <li><span class="material-icons">insert_drive_file</span>File 1</li>
+            <li><span class="material-icons">insert_drive_file</span>File 2</li>
+          </ul>
+        </div>
+
+        <div class="folder">
+          <span class="material-icons folder-icon">folder</span>
+          <span class="folder-text">Folder 3</span>
+
+          <span class="material-icons folder-action">add</span>
+          <span class="material-icons folder-action">remove</span>
+
+          <ul>
+            <li><span class="material-icons">insert_drive_file</span>File 1</li>
+            <li><span class="material-icons">insert_drive_file</span>File 2</li>
+          </ul>
+        </div>
       </div>
 
+      <div id="customizeButton">
+        <button onclick="loadLogin()">
+          <span class="material-icons">login</span>
+          <span style="font-family: monospace;">Login</span>
+        </button>
 
-
-    </div>
-
-
-
-
-    <div class="file-explorer">
-      <br>
-
-      <div class="folder">
-        <span class="material-icons folder-icon">folder</span>
-        <span class="folder-text">Folder 3</span>
-        <span class="material-icons folder-action">add</span>
-        <span class="material-icons folder-action">remove</span>
-
-        <ul>
-          <li><span class="material-icons">insert_drive_file</span>File 1</li>
-          <li><span class="material-icons">insert_drive_file</span>File 2</li>
-        </ul>
-      </div>
-      <div class="folder">
-        <span class="material-icons folder-icon">folder</span>
-        <span class="folder-text">Folder 3</span>
-        <span class="material-icons folder-action">add</span>
-        <span class="material-icons folder-action">remove</span>
-
-        <ul>
-          <li><span class="material-icons">insert_drive_file</span>File 1</li>
-          <li><span class="material-icons">insert_drive_file</span>File 2</li>
-        </ul>
-      </div>
-
-      <div class="folder">
-        <span class="material-icons folder-icon">folder</span>
-        <span class="folder-text">Folder 3</span>
-
-        <span class="material-icons folder-action">add</span>
-        <span class="material-icons folder-action">remove</span>
-
-        <ul>
-          <li><span class="material-icons">insert_drive_file</span>File 1</li>
-          <li><span class="material-icons">insert_drive_file</span>File 2</li>
-        </ul>
+        <button onclick="loadRegistration()">
+          <span class="material-icons">account_circle</span>
+          <span style="font-family: monospace;">Register</span>
+        </button>
+  
+        <button onclick="showWindow(), saveData()">
+          <span class="material-icons">settings</span>
+          <span style="font-family: monospace;">Settings</span>
+        </button>
       </div>
 
     </div>
 
-
-
-
-
-
-
-
-
-    <button onclick="showWindow(), saveData()" id="customizeButton">
-      <span class="material-icons">settings</span>
-      <span>Settings</span>
-
-    </button>
-
-    <a id="mdDocumentation" href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Documentation</a>
-  </div>
-
-
-
-</div>
-
-
-<div style="display: none;" id="customizeWindow" class="customize-window">
-  <div id="customizeContent" class="customize-content">
-    <h2 class="title">Page Customizer</h2>
-    <div class="color-picker">
-      <label for="bodyColorSelector" class="color-picker-label">Choose background color:</label>
-      <input type="color" id="bodyColorSelector" class="color-picker-input" value="#ffffff">
+    <div style="display: none" id="customizeWindow" class="customize-window">
+      <div id="customizeContent" class="customize-content">
+        <h2 class="title">Page Customizer</h2>
+        <div class="color-picker">
+          <label for="bodyColorSelector" class="color-picker-label"
+            >Choose background color:</label
+          >
+          <input
+            type="color"
+            id="bodyColorSelector"
+            class="color-picker-input"
+            value="#ffffff"
+          />
+        </div>
+        <div class="dropdown">
+          <label for="fontSelector" class="dropdown-label">Choose font:</label>
+          <select id="fontDropdown" class="dropdown-select">
+            <option value="Monospace">Monospace</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Consolas">Consolas</option>
+          </select>
+        </div>
+        <div class="color-picker">
+          <label for="editorColorSelector" class="color-picker-label"
+            >Choose editor color:</label
+          >
+          <input
+            type="color"
+            id="editorColorSelector"
+            class="color-picker-input"
+            value="#ffffff"
+          />
+        </div>
+        <div class="color-picker">
+          <label for="previewColorSelector" class="color-picker-label"
+            >Choose preview color:</label
+          >
+          <input
+            type="color"
+            id="previewColorSelector"
+            class="color-picker-input"
+            value="#ffffff"
+          />
+        </div>
+        <div class="color-picker">
+          <label for="toolbarColorSelector" class="color-picker-label"
+            >Choose toolbar color:</label
+          >
+          <input
+            type="color"
+            id="toolbarColorSelector"
+            class="color-picker-input"
+            value="#ffffff"
+          />
+        </div>
+        <div class="color-picker">
+          <label for="textColorSelector" class="color-picker-label"
+            >Choose text color:</label
+          >
+          <input
+            type="color"
+            id="textColorSelector"
+            class="color-picker-input"
+            value="#000000"
+          />
+        </div>
+        <div class="color-picker">
+          <label for="codeColorSelector" class="color-picker-label"
+            >Choose code color:</label
+          >
+          <input
+            type="color"
+            id="codeColorSelector"
+            class="color-picker-input"
+            value="#000000"
+          />
+        </div>
+        <button onclick="setDefaults()" id="resetButton" class="reset-button">
+          Reset to Defaults
+        </button>
+      </div>
     </div>
-    <div class="dropdown">
-      <label for="fontSelector" class="dropdown-label">Choose font:</label>
-      <select id="fontDropdown" class="dropdown-select">
-        <option value="Monospace">Monospace</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Helvetica">Helvetica</option>
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Consolas">Consolas</option>
-      </select>
-    </div>
-    <div class="color-picker">
-      <label for="editorColorSelector" class="color-picker-label">Choose editor color:</label>
-      <input type="color" id="editorColorSelector" class="color-picker-input" value="#ffffff">
-    </div>
-    <div class="color-picker">
-      <label for="previewColorSelector" class="color-picker-label">Choose preview color:</label>
-      <input type="color" id="previewColorSelector" class="color-picker-input" value="#ffffff">
-    </div>
-    <div class="color-picker">
-      <label for="toolbarColorSelector" class="color-picker-label">Choose toolbar color:</label>
-      <input type="color" id="toolbarColorSelector" class="color-picker-input" value="#ffffff">
-    </div>
-    <div class="color-picker">
-      <label for="textColorSelector" class="color-picker-label">Choose text color:</label>
-      <input type="color" id="textColorSelector" class="color-picker-input" value="#000000">
-    </div>
-    <div class="color-picker">
-      <label for="codeColorSelector" class="color-picker-label">Choose code color:</label>
-      <input type="color" id="codeColorSelector" class="color-picker-input" value="#000000">
-    </div>
-    <button onclick="setDefaults()" id="resetButton" class="reset-button">Reset to Defaults</button>
-  </div>
-</div>
 
+    <script src="scripts/savesystem.js"></script>
+    <script src="scripts/autogrow.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script src="scripts/customizeSystem.js"></script>
+    <script>
 
-
-
-  <script src="scripts/savesystem.js"></script>
-  <script src="scripts/autogrow.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-  <script src="scripts/customizeSystem.js"></script>
-  <script>
-    window.onload = () => {
-      const editor = document.getElementById("editor");
-      const preview = document.getElementById("preview");
-      if(editor.value == null){
-        preview.firstChild.getElementById("markdownplaceholder").document.value = "Markdown Text Area...";
+      function loadRegistration(){
+        window.location.href = "register.php";
       }
 
-      editor.addEventListener("input", () => {
-        const markdown = editor.value;
-        preview.innerHTML = marked(markdown);
-        hljs.highlightAll();
-      });
-    };
-  </script>
+      function loadLogin(){
+        window.location.href = "login.php";
+      }
+      window.onload = () => {
+        const editor = document.getElementById("editor");
+        const preview = document.getElementById("preview");
+        if (editor.value == null) {
+          preview.firstChild.getElementById(
+            "markdownplaceholder"
+          ).document.value = "Markdown Text Area...";
+        }
 
-</body>
-
+        editor.addEventListener("input", () => {
+          const markdown = editor.value;
+          preview.innerHTML = marked(markdown);
+          hljs.highlightAll();
+        });
+      };
+    </script>
+  </body>
 </html>

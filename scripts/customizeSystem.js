@@ -6,14 +6,13 @@ function showWindow(window_ = document.getElementById("customizeWindow")) {
   }
 }
 
-
 function setDefaults() {
   document.body.style.backgroundColor = "#303030";
   document.getElementById("editor").style.backgroundColor = "#343434";
   document.getElementById("preview").style.backgroundColor = "#404040";
   document.getElementById("toolbar").style.backgroundColor = "#343434";
   document.body.style.color = "#f5f5f5";
-  document.querySelectorAll("code").forEach(function(code) {
+  document.querySelectorAll("code").forEach(function (code) {
     code.style.color = "#ffffff";
   });
   document.body.style.fontFamily = "monospace";
@@ -25,7 +24,6 @@ function setDefaults() {
   codeColorPicker.value = "#ffffff";
   fontDropdown.value = "monospace";
 }
-
 
 var bodyColor = document.body.style.backgroundColor;
 var editorColor = document.getElementById("editor").style.backgroundColor;
@@ -161,28 +159,3 @@ function loadData() {
     }
   }
 }
-
-// Call loadData() function when the page is loaded to load the saved data from cookies
-// window.addEventListener("load", function () {
-//   loadData();
-
-//   var savedData = loadData();
-//   if (savedData) {
-//     document.body.style.backgroundColor = savedData.bodyColor;
-//     document.getElementById("editor").style.backgroundColor = savedData.editorColor;
-//     document.getElementById("preview").style.backgroundColor = savedData.previewColor;
-//     document.getElementById("toolbar").style.backgroundColor = savedData.toolbarColor;
-//     document.body.style.color = savedData.textColor;
-//     document.querySelectorAll("code").forEach(function(code) {
-//       code.style.color = savedData.codeColor;
-//     });
-//     document.body.style.fontFamily = savedData.fontFamily;
-//     bodyColorPicker.value = savedData.bodyColor;
-//     editorColorPicker.value = savedData.editorColor;
-//     previewColorPicker.value = savedData.previewColor;
-//     toolbarColorPicker.value = savedData.toolbarColor;
-//     textColorPicker.value = savedData.textColor;
-//     codeColorPicker.value = savedData.codeColor;
-//     fontDropdown.value = savedData.fontFamily;
-//   }
-// });

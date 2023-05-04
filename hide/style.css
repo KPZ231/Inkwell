@@ -1,0 +1,116 @@
+body {
+  background-color: #303030;
+  margin: 0px;
+  height: 100%;
+}
+
+h1,h2,h3,p{
+  color: white;
+  font-family: monospace;
+}
+
+#documentName{
+  position: relative;
+  width: 30%;
+  float: right;
+  background-color: #343434;
+  resize: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
+}
+#icontoolbar {
+  padding-left: 50px; margin-top: -35px; font-size: 1.4ex;
+}
+#containter {
+  position: relative;
+  float: right;
+  background-color: #343434;
+  width: 85%;
+}
+
+#preview {
+  position: relative;
+  width: 50%;
+  float: right;
+  background-color: #404040;
+  resize: none;
+  border: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
+}
+
+#editor {
+  position: relative;
+  width: 49%;
+  float: left;
+  background-color: #343434;
+  resize: none;
+  border: none;
+  overflow: auto;
+  outline: none;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
+}
+
+#toolbar {
+  position: fixed;
+  float: left;
+  background-color: #343434;
+  color: whitesmoke;
+  font-size: xx-large;
+  font-family: monospace;
+  width: 15%;
+  height: 100vb;
+}
+
+pre {
+  background-color: #252525;
+  border: 1px solid #252525;
+  border-radius: 10px;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+}
+
+
+#createFile{
+  width: 80%;
+  height: 10vb;
+  position: relative;
+  margin: auto;
+  background-color: #303030;
+}
+
+/* unvisited link */
+a:link {
+  color: #7851A9;
+}
+
+/* visited link */
+a:visited {
+  color: blueviolet;
+}
+
+/* mouse over link */
+a:hover {
+  color: blueviolet;
+}
+
+/* selected link */
+a:active {
+  color: #BF00FF;
+}
